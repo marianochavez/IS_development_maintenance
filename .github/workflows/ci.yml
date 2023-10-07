@@ -80,6 +80,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    environment:
+      name: Production
+      url: https://marianochavez.github.io/IS_development_maintenance/
     steps:
       # Download dist artifacts
       - uses: actions/download-artifact@v3

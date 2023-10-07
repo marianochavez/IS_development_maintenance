@@ -1,4 +1,4 @@
-# TP7 - Plan de desarrollo y mantenimiento - Ingeniería de Software
+# TP7 - Plan de Desarrollo y Mantenimiento - Ingeniería de Software
 
 ## Features
 ### Overview
