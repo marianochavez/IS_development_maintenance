@@ -54,7 +54,6 @@ pnpm build
 # build with 404.html file added for GitHub Pages
 pnpm build:ci
 ```
-> See explanation of `404.html` file [here](#github-pages)
 #### Test
 
 ```sh
