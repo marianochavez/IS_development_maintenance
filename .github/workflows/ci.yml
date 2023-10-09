@@ -71,8 +71,8 @@ jobs:
 
   deploy:
     name: Deploy
-    # Deploy only for development branch
-    if: github.ref == 'refs/heads/development'
+    # This condition checks if it's a pull request to development and if it's a merge operation.
+    if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'development' && github.event.action == 'closed' && github.event.pull_request.merged == true
     needs: buildAndTest
     runs-on: ubuntu-latest
     permissions:
