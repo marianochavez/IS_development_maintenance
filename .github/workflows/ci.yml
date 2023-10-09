@@ -1,23 +1,14 @@
 name: App CI
 
 on:
-  push:
-    # Run on all branches
-    branches:
-      - "*"
-    # Run only if files modified are not docs
-    paths-ignore:
-      - "*.md"
   pull_request:
-    # Run on all branches
     branches:
-      - "*"
+      - 'development'
     # Run only if files modified are not docs
     paths-ignore:
-      - "*.md"
+      - '*.md'
 
 jobs:
-
   buildAndTest:
     name: Build & Test
     runs-on: ubuntu-latest
@@ -43,6 +34,12 @@ jobs:
 
       - name: 🧪 Test
         run: pnpm test:ci
+
+      - name: 🔍 Lint
+        run: pnpm lint
+
+      - name: 🎨 Check Format
+        run: npx prettier --check .
 
       # Upload dist artifacts
       - uses: actions/upload-artifact@v3
@@ -74,14 +71,14 @@ jobs:
 
   deploy:
     name: Deploy
-    # Deploy only for main branch
-    if: github.ref == 'refs/heads/main'
+    # Deploy only for development branch
+    if: github.ref == 'refs/heads/development'
     needs: buildAndTest
     runs-on: ubuntu-latest
     permissions:
       contents: write
     environment:
-      name: Production
+      name: Development
       url: https://marianochavez.github.io/IS_development_maintenance/
     steps:
       # Download dist artifacts

@@ -15,3 +15,15 @@ test('increments count', () => {
 
   expect(screen.getByText('Count is: 1')).toBeDefined();
 });
+
+test('renders hello world', () => {
+  render(<App />);
+
+  expect(screen.getByText('Hello World!')).toBeDefined();
+});
+
+test('renders logo', () => {
+  render(<App />);
+
+  expect(screen.getByAltText('logo')).toBeDefined();
+});
